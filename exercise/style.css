@@ -1,0 +1,176 @@
+/* =============================================================
+   LUNAR TRACKER — style.css
+   New concepts in this file vs the Star Chart:
+     - display: flex and its properties
+     - transform: translateX() for centering
+     - backdrop-filter: blur()
+     - text-transform
+     - border-radius
+   ============================================================= */
+
+
+/* -------------------------------------------------------------
+   TODO 1 — Universal reset
+   Same as the star chart. Remove all default margins and padding.
+   Set box-sizing: border-box on everything.
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 2 — Body styles
+   PROPERTIES:
+     background: #070b14
+     overflow: hidden
+     font-family: 'Georgia', serif
+     color: #e8d9b5
+     cursor: default        ← arrow cursor (not crosshair this time)
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 3 — Canvas
+   Same as before: display: block removes the inline gap.
+   SELECTOR: #moon-canvas
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 4 — Info card (the main new layout challenge)
+   WHAT:  A rounded frosted-glass card fixed at the bottom center.
+
+   HOW to center it horizontally with fixed positioning:
+     left: 50%              ← moves the LEFT EDGE to the center
+     transform: translateX(-50%)  ← shifts it left by half its own width
+     Together these perfectly center any element regardless of its width.
+
+   PROPERTIES:
+     position: fixed
+     bottom: 40px
+     left: 50%
+     transform: translateX(-50%)
+     background: rgba(7, 11, 20, 0.75)
+     border: 1px solid rgba(230, 215, 180, 0.12)
+     border-radius: 12px
+     padding: 24px 40px
+     text-align: center
+     min-width: 360px
+     backdrop-filter: blur(8px)    ← blurs whatever is behind the card
+
+   QUESTION: What does backdrop-filter do differently from opacity?
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 5 — Phase header (icon + name side by side)
+   WHAT:  Use flexbox to put the emoji and phase name on one line,
+          centered, with a gap between them.
+
+   NEW CONCEPT — display: flex
+     flex turns a container into a "flex container".
+     Its direct children become "flex items" and line up in a row by default.
+     You then control alignment with these properties:
+       align-items: center       → vertically center the items
+       justify-content: center   → horizontally center the items
+       gap: 12px                 → space between items
+
+   SELECTOR: #phase-header
+   PROPERTIES:
+     display: flex
+     align-items: center
+     justify-content: center
+     gap: 12px
+     margin-bottom: 20px
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 6 — Phase icon size
+   SELECTOR: #phase-icon
+   PROPERTIES:
+     font-size: 2rem
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 7 — Phase name text
+   SELECTOR: #phase-name
+   PROPERTIES:
+     font-size: 1.4rem
+     letter-spacing: 0.15em
+     color: #f0e6c8
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 8 — Stats row (three stat blocks side by side)
+   WHAT:  Another flex container — puts the three .stat divs
+          in a horizontal row with equal spacing.
+
+   justify-content: space-around → equal space around each item
+   (Try space-between or space-evenly and see the difference)
+
+   SELECTOR: #stats
+   PROPERTIES:
+     display: flex
+     justify-content: space-around
+     gap: 24px
+     margin-bottom: 16px
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 9 — Individual stat block (label + value stacked)
+   WHAT:  Each .stat is itself a flex container, but vertical.
+          flex-direction: column stacks children top to bottom.
+
+   SELECTOR: .stat
+   PROPERTIES:
+     display: flex
+     flex-direction: column
+     gap: 4px
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 10 — Stat label (the small uppercase descriptor)
+   SELECTOR: .label
+   PROPERTIES:
+     font-size: 0.65rem
+     letter-spacing: 0.15em
+     color: #556677
+     text-transform: uppercase    ← CSS uppercases the text for you
+                                     (better than typing it in HTML)
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 11 — Stat value (the actual number)
+   SELECTOR: .value
+   PROPERTIES:
+     font-size: 1rem
+     color: #c8ddf0
+------------------------------------------------------------- */
+/* your code here */
+
+
+/* -------------------------------------------------------------
+   TODO 12 — Current date line
+   SELECTOR: #current-date
+   PROPERTIES:
+     font-size: 0.7rem
+     color: #445566
+     letter-spacing: 0.1em
+     margin-top: 4px
+     font-style: italic
+------------------------------------------------------------- */
+/* your code here */
