@@ -7,15 +7,11 @@
      - text-transform
      - border-radius
    ============================================================= */
-
-
-/* -------------------------------------------------------------
-   TODO 1 — Universal reset
-   Same as the star chart. Remove all default margins and padding.
-   Set box-sizing: border-box on everything.
-------------------------------------------------------------- */
-/* your code here */
-
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 /* -------------------------------------------------------------
    TODO 2 — Body styles
@@ -27,7 +23,13 @@
      cursor: default        ← arrow cursor (not crosshair this time)
 ------------------------------------------------------------- */
 /* your code here */
-
+body {
+  background: #070b14;
+  overflow: hidden;
+  font-family: 'Georgia', serif;
+  color: #e8d9b5;
+  cursor: default;
+}
 
 /* -------------------------------------------------------------
    TODO 3 — Canvas
@@ -35,7 +37,9 @@
    SELECTOR: #moon-canvas
 ------------------------------------------------------------- */
 /* your code here */
-
+#moon-canvas {
+  display: block;
+}
 
 /* -------------------------------------------------------------
    TODO 4 — Info card (the main new layout challenge)
@@ -62,7 +66,19 @@
    QUESTION: What does backdrop-filter do differently from opacity?
 ------------------------------------------------------------- */
 /* your code here */
-
+#Info-card {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(7,11,20,0.75);
+  border: 1px solid rgba(230,215,180,0.12);
+  border-radius: 12px;
+  padding: 24px 40px;
+  text-align: center;
+  min-width: 360px;
+  backdrop-filter: blur(8px);
+}
 
 /* -------------------------------------------------------------
    TODO 5 — Phase header (icon + name side by side)

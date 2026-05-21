@@ -3,97 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lunar Phase Tracker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-</body>
-</html>
+    <canvas id="moon-canvas"></canvas>
 
-    <!-- TODO 1 — Set the character encoding
-         WHY: Ensures special characters (🌕 emojis!) render correctly.
-         HOW: <meta charset="UTF-8"/>
-    -->
-    <!-- your code here -->
+    <div id="info-card">
+        <div id="phase-header">
+            <span id="phase-icon">🌕</span>
+            <span id="phase-name">Full Moon</span>
+        </div>
 
-    <!-- TODO 2 — Set the viewport for mobile scaling
-         WHY: Without this, mobile browsers zoom out and shrink everything.
-         HOW: <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    -->
-    <!-- your code here -->
+        <div id="stats">
+            <div class="stat">
+                <span class="label">Illumination</span>
+                <span id="illumination" class="value">-</span>
+            </div>
+            <div class="stat">
+                <span class="label">Cycle day</span>
+                <span id="cycle-day" class="value">-</span>
+            </div>
+            <div class="stat">
+                <span class="label">Next full moon</span>
+                <span id="next-full" class="value">-</span>
+            </div>
+        </div>
+        <div id="current-date"></div>
+    </div>
 
-    <!-- TODO 3 — Set the page title
-         HOW: <title>Lunar Phase Tracker</title>
-    -->
-    <!-- your code here -->
-
-    <!-- TODO 4 — Link the stylesheet
-         HOW: <link rel="stylesheet" href="style.css"/>
-    -->
-    <!-- your code here -->
-
-</head>
-<body>
-
-    <!-- TODO 5 — Add the canvas
-         WHAT: The drawing surface for the moon.
-         HOW:  <canvas id="moon-canvas"></canvas>
-         NOTE: No width or height here — JavaScript sets those.
-    -->
-    <!-- your code here -->
-
-
-    <!-- TODO 6 — Build the info card
-         WHAT: A panel at the bottom of the screen showing phase data.
-               It has three sections inside:
-               1. A header with the phase icon and name
-               2. A stats row with three stat blocks
-               3. A date line at the bottom
-
-         Build it like this exactly (ids matter — JS finds them by id):
-
-         <div id="info-card">
-
-             <div id="phase-header">
-                 <span id="phase-icon">🌕</span>
-                 <span id="phase-name">Full Moon</span>
-             </div>
-
-             <div id="stats">
-                 <div class="stat">
-                     <span class="label">Illumination</span>
-                     <span id="illumination" class="value">—</span>
-                 </div>
-                 <div class="stat">
-                     <span class="label">Cycle day</span>
-                     <span id="cycle-day" class="value">—</span>
-                 </div>
-                 <div class="stat">
-                     <span class="label">Next full moon</span>
-                     <span id="next-full" class="value">—</span>
-                 </div>
-             </div>
-
-             <div id="current-date"></div>
-
-         </div>
-
-         WHY span vs div inside the stat:
-           span is inline — it stays on the same line as its siblings.
-           div is block — it always starts on a new line.
-           label and value sit on different lines because of CSS (flex-direction: column),
-           not because of the HTML element type.
-    -->
-    <!-- your code here -->
-
-
-    <!-- TODO 7 — Load the script
-         HOW: <script src="script.js"></script>
-         WHY at the bottom: HTML is read top-to-bottom. The script needs
-         the canvas and info-card elements to already exist before it runs.
-         If you put <script> in <head>, getElementById returns null.
-    -->
-    <!-- your code here -->
-
+    <script src="script.js"></script>
 </body>
 </html>
