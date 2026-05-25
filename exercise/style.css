@@ -131,7 +131,11 @@ body {
      color: #f0e6c8
 ------------------------------------------------------------- */
 /* your code here */
-
+#phase-name {
+  font-size: 1.4reml;
+  letter-spacing: 0.15em;
+  color: #f0e6c8;
+}
 
 /* -------------------------------------------------------------
    TODO 8 — Stats row (three stat blocks side by side)
@@ -149,7 +153,12 @@ body {
      margin-bottom: 16px
 ------------------------------------------------------------- */
 /* your code here */
-
+#stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  margin-bottom: 16px;
+}
 
 /* -------------------------------------------------------------
    TODO 9 — Individual stat block (label + value stacked)
@@ -163,7 +172,11 @@ body {
      gap: 4px
 ------------------------------------------------------------- */
 /* your code here */
-
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
 /* -------------------------------------------------------------
    TODO 10 — Stat label (the small uppercase descriptor)
@@ -176,7 +189,12 @@ body {
                                      (better than typing it in HTML)
 ------------------------------------------------------------- */
 /* your code here */
-
+.label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #556677;
+  text-transform: uppercase;
+}
 
 /* -------------------------------------------------------------
    TODO 11 — Stat value (the actual number)
@@ -186,7 +204,10 @@ body {
      color: #c8ddf0
 ------------------------------------------------------------- */
 /* your code here */
-
+.value {
+  font-size: 1rem;
+  color: #c8ddf0;
+}
 
 /* -------------------------------------------------------------
    TODO 12 — Current date line
@@ -199,3 +220,10 @@ body {
      font-style: italic
 ------------------------------------------------------------- */
 /* your code here */
+#current-day {
+  font-size: 0.7rem;
+  color: #445566;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+  font-style: italic;
+}
