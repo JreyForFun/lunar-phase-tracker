@@ -66,7 +66,7 @@ body {
    QUESTION: What does backdrop-filter do differently from opacity?
 ------------------------------------------------------------- */
 /* your code here */
-#Info-card {
+#info-card {
   position: fixed;
   bottom: 40px;
   left: 50%;
@@ -132,7 +132,7 @@ body {
 ------------------------------------------------------------- */
 /* your code here */
 #phase-name {
-  font-size: 1.4reml;
+  font-size: 1.4rem;
   letter-spacing: 0.15em;
   color: #f0e6c8;
 }
@@ -220,7 +220,7 @@ body {
      font-style: italic
 ------------------------------------------------------------- */
 /* your code here */
-#current-day {
+#current-date {
   font-size: 0.7rem;
   color: #445566;
   letter-spacing: 0.1em;
