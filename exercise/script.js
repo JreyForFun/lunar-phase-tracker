@@ -10,6 +10,7 @@ const illumination = document.getElementById('illumination');
 const cycleDay = document.getElementById('cycle-day');
 const nextFull = document.getElementById('next-full');
 const currentDate = document.getElementById('current-date');
+const cycleBar = document.getElementById('cycle-bar');
 
 
 const CYCLE = 29.53058867;
@@ -26,8 +27,6 @@ const PHASES = [
 ]
 
 // Calculate the moon phase from a date
-
-
 function getMoonPhase(date) {
     const knownNewMoon = new Date(2000, 0, 6);
     const msPerDay = 1000 * 60 * 60 * 24;
@@ -60,7 +59,7 @@ function drawBackground() {
 
 function drawMoonGlow(cx, cy, r, intensity) {
     const grad = ctx.createRadialGradient(cx, cy, r * 0.9, cx, cy, r * 2.5);
-    grad.addColorStop(0, `rgba(230, 215, 180, ${0.18 * intensity})`);
+    grad.addColorStop(0, `rgba(208, 232, 255, ${0.18 * intensity})`);
     grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = grad;
     ctx.beginPath();
@@ -84,7 +83,7 @@ function drawMoon(cx, cy, r, norm) {
     ctx.fillStyle = '#11152a';
     ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
 
-    ctx.fillStyle = '#f0e6c8';
+    ctx.fillStyle = '#d0e8ff';
     if(waxing) {
         ctx.beginPath();
         ctx.arc(cx, cy, r, -Math.PI / 2, Math.PI / 2, false);
@@ -99,13 +98,13 @@ function drawMoon(cx, cy, r, norm) {
 
     const ex = r * Math.abs(tX);
     if(waxing) {
-        ctx.fillStyle = tX > 0 ? '#11152a' : '#f0e6c8';
+        ctx.fillStyle = tX > 0 ? '#11152a' : '#d0e8ff';
         ctx.beginPath();
         ctx.ellipse(cx, cy, ex, r, 0, -Math.PI / 2, Math.PI / 2, false);
         ctx.closePath();
         ctx.fill();
     } else {
-        ctx.fillStyle = tX < 0 ? '#f0e6c8' : '#11152a';
+        ctx.fillStyle = tX < 0 ? '#d0e8ff' : '#11152a';
         ctx.beginPath();
         ctx.ellipse(cx, cy, ex, r, 0, Math.PI / 2, -Math.PI / 2, false);
         ctx.closePath();
@@ -167,7 +166,9 @@ function updateInfo(phase) {
         : `${phase.daysToFull} day${phase.daysToFull === 1 ? '' : 's'}`;
     currentDate.innerText = new Date().toLocaleDateString('en-US', {
         weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-    });
+    })
+    const cyclePct = Math.round(phase.norm * 100);
+    if(cycleBar) cycleBar.style.width = `${cyclePct}%`;
 }
 
 function render() {
@@ -175,7 +176,7 @@ function render() {
     const cx = canvas.width / 2;
     const cy = canvas.height / 2;
     const r = Math.min(canvas.width, canvas.height) * 0.27;
-    const pulse = Math.sin(Date.now() / 1200) * 0.3 + 0.7;
+    const pulse = Math.sin(Date.now() / 800) * 0.3 + 0.7;
 
     drawBackground();
     drawMoonGlow(cx, cy, r, (phase.illuminationPct / 100) * pulse);

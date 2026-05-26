@@ -1,158 +1,53 @@
-/* =============================================================
-   LUNAR TRACKER — style.css
-   New concepts in this file vs the Star Chart:
-     - display: flex and its properties
-     - transform: translateX() for centering
-     - backdrop-filter: blur()
-     - text-transform
-     - border-radius
-   ============================================================= */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-/* -------------------------------------------------------------
-   TODO 2 — Body styles
-   PROPERTIES:
-     background: #070b14
-     overflow: hidden
-     font-family: 'Georgia', serif
-     color: #e8d9b5
-     cursor: default        ← arrow cursor (not crosshair this time)
-------------------------------------------------------------- */
-/* your code here */
 body {
   background: #070b14;
   overflow: hidden;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   color: #e8d9b5;
   cursor: default;
 }
 
-/* -------------------------------------------------------------
-   TODO 3 — Canvas
-   Same as before: display: block removes the inline gap.
-   SELECTOR: #moon-canvas
-------------------------------------------------------------- */
-/* your code here */
 #moon-canvas {
   display: block;
 }
 
-/* -------------------------------------------------------------
-   TODO 4 — Info card (the main new layout challenge)
-   WHAT:  A rounded frosted-glass card fixed at the bottom center.
-
-   HOW to center it horizontally with fixed positioning:
-     left: 50%              ← moves the LEFT EDGE to the center
-     transform: translateX(-50%)  ← shifts it left by half its own width
-     Together these perfectly center any element regardless of its width.
-
-   PROPERTIES:
-     position: fixed
-     bottom: 40px
-     left: 50%
-     transform: translateX(-50%)
-     background: rgba(7, 11, 20, 0.75)
-     border: 1px solid rgba(230, 215, 180, 0.12)
-     border-radius: 12px
-     padding: 24px 40px
-     text-align: center
-     min-width: 360px
-     backdrop-filter: blur(8px)    ← blurs whatever is behind the card
-
-   QUESTION: What does backdrop-filter do differently from opacity?
-------------------------------------------------------------- */
-/* your code here */
 #info-card {
   position: fixed;
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(7,11,20,0.75);
-  border: 1px solid rgba(230,215,180,0.12);
+  background: rgba(7, 11, 20, 0.75  );
+  border: 1px solid rgba(230, 215, 180, 0.12);
   border-radius: 12px;
   padding: 24px 40px;
   text-align: center;
   min-width: 360px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(p8x);
 }
 
-/* -------------------------------------------------------------
-   TODO 5 — Phase header (icon + name side by side)
-   WHAT:  Use flexbox to put the emoji and phase name on one line,
-          centered, with a gap between them.
-
-   NEW CONCEPT — display: flex
-     flex turns a container into a "flex container".
-     Its direct children become "flex items" and line up in a row by default.
-     You then control alignment with these properties:
-       align-items: center       → vertically center the items
-       justify-content: center   → horizontally center the items
-       gap: 12px                 → space between items
-
-   SELECTOR: #phase-header
-   PROPERTIES:
-     display: flex
-     align-items: center
-     justify-content: center
-     gap: 12px
-     margin-bottom: 20px
-------------------------------------------------------------- */
-/* your code here */
 #phase-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap:12px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
-
-/* -------------------------------------------------------------
-   TODO 6 — Phase icon size
-   SELECTOR: #phase-icon
-   PROPERTIES:
-     font-size: 2rem
-------------------------------------------------------------- */
-/* your code here */
 #phase-icon {
   font-size: 2rem;
 }
 
-/* -------------------------------------------------------------
-   TODO 7 — Phase name text
-   SELECTOR: #phase-name
-   PROPERTIES:
-     font-size: 1.4rem
-     letter-spacing: 0.15em
-     color: #f0e6c8
-------------------------------------------------------------- */
-/* your code here */
 #phase-name {
   font-size: 1.4rem;
   letter-spacing: 0.15em;
   color: #f0e6c8;
 }
 
-/* -------------------------------------------------------------
-   TODO 8 — Stats row (three stat blocks side by side)
-   WHAT:  Another flex container — puts the three .stat divs
-          in a horizontal row with equal spacing.
-
-   justify-content: space-around → equal space around each item
-   (Try space-between or space-evenly and see the difference)
-
-   SELECTOR: #stats
-   PROPERTIES:
-     display: flex
-     justify-content: space-around
-     gap: 24px
-     margin-bottom: 16px
-------------------------------------------------------------- */
-/* your code here */
 #stats {
   display: flex;
   justify-content: space-around;
@@ -160,35 +55,12 @@ body {
   margin-bottom: 16px;
 }
 
-/* -------------------------------------------------------------
-   TODO 9 — Individual stat block (label + value stacked)
-   WHAT:  Each .stat is itself a flex container, but vertical.
-          flex-direction: column stacks children top to bottom.
-
-   SELECTOR: .stat
-   PROPERTIES:
-     display: flex
-     flex-direction: column
-     gap: 4px
-------------------------------------------------------------- */
-/* your code here */
 .stat {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-/* -------------------------------------------------------------
-   TODO 10 — Stat label (the small uppercase descriptor)
-   SELECTOR: .label
-   PROPERTIES:
-     font-size: 0.65rem
-     letter-spacing: 0.15em
-     color: #556677
-     text-transform: uppercase    ← CSS uppercases the text for you
-                                     (better than typing it in HTML)
-------------------------------------------------------------- */
-/* your code here */
 .label {
   font-size: 0.65rem;
   letter-spacing: 0.15em;
@@ -196,34 +68,109 @@ body {
   text-transform: uppercase;
 }
 
-/* -------------------------------------------------------------
-   TODO 11 — Stat value (the actual number)
-   SELECTOR: .value
-   PROPERTIES:
-     font-size: 1rem
-     color: #c8ddf0
-------------------------------------------------------------- */
-/* your code here */
 .value {
   font-size: 1rem;
   color: #c8ddf0;
 }
 
-/* -------------------------------------------------------------
-   TODO 12 — Current date line
-   SELECTOR: #current-date
-   PROPERTIES:
-     font-size: 0.7rem
-     color: #445566
-     letter-spacing: 0.1em
-     margin-top: 4px
-     font-style: italic
-------------------------------------------------------------- */
-/* your code here */
 #current-date {
   font-size: 0.7rem;
   color: #445566;
   letter-spacing: 0.1em;
   margin-top: 4px;
   font-style: italic;
+}
+
+.progress {
+  width: 140px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #d0e8ff, #a9d4ff);
+  transition: width 400ms ease;
+}
+
+#controls {
+  margin-top: 20px;
+}
+#phase-date {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 6px 10px;
+  background: rgba(7, 11, 20, 0.75);
+  color: inherit;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+  backdrop-filter: blur(8px);
+}
+
+#phase-date:focus {
+  box-shadow: 0 6px 18px rgba(208,232,255,0.06);
+  border-color: rgba(208,232,255,0.14);
+}
+
+#today-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  margin-left: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(230, 215, 180, 0.12);
+  background: rgba(7, 11, 20, 0.75);
+  backdrop-filter: blur(8px);
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: box-shadow 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+#today-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(208,232,255,0.06);
+}
+
+#today-btn:focus {
+  outline: none;
+  border-color: rgba(208,232,255,0.16);
+  box-shadow: 0 8px 22px rgba(208,232,255,0.08);
+}
+
+#phase-list {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.phase-item {
+  font-size:1.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.65;
+  padding: 6px;
+  border-radius: 8px;
+  transition: transform 160ms ease, opacity 160mx ease;
+}
+
+.phase-item.active {
+  opacity: 1;
+  transform: scale(1.12);
+  background: rgba(208,232,255, 0.06);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
 }

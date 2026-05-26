@@ -15,6 +15,7 @@
             <span id="phase-name">Full Moon</span>
         </div>
 
+
         <div id="stats">
             <div class="stat">
                 <span class="label">Illumination</span>
@@ -28,10 +29,31 @@
                 <span class="label">Next full moon</span>
                 <span id="next-full" class="value">-</span>
             </div>
+            <div class="stat">
+                <span class="label">Cycle progress</span>
+                <div class="value">
+                    <div class="progress">
+                        <div id="cycle-bar" class="progress-bar" style="width:0%">-</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="current-date"></div>
+        <div id="controls">
+            <input type="date" id="phase-date">
+            <button id="today-btn">Today</button>
+        </div>
     </div>
-
+    <div id="phase-list" aria-hidden="false">
+        <div class="phase-item" data-index="0">🌑</div>
+        <div class="phase-item" data-index="1">🌒</div>
+        <div class="phase-item" data-index="2">🌓</div>
+        <div class="phase-item" data-index="3">🌔</div>
+        <div class="phase-item" data-index="4">🌕</div>
+        <div class="phase-item" data-index="5">🌖</div>
+        <div class="phase-item" data-index="6">🌗</div>
+        <div class="phase-item" data-index="7">🌘</div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
