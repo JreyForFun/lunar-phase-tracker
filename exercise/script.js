@@ -36,6 +36,8 @@ if(todayBtn) {
 
 const CYCLE = 29.53058867;
 
+// Moon Phases
+
 const PHASES = [
     { name: 'New Moon',        icon: '🌑', max: 1.85  },
     { name: 'Waxing Crescent', icon: '🌒', max: 7.38  },
