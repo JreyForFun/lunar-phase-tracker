@@ -11,6 +11,27 @@ const cycleDay = document.getElementById('cycle-day');
 const nextFull = document.getElementById('next-full');
 const currentDate = document.getElementById('current-date');
 const cycleBar = document.getElementById('cycle-bar');
+const dateInput = document.getElementById('phase-date');
+const todayBtn = document.getElementById('today-btn');
+let selectedDate = null;
+
+if(dateInput) {
+    dateInput.addEventListener('change', (e) => {
+        const val = e.target.value;
+        if(val) {
+            const [y, m, d] = val.split('-');
+            selectedDate = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
+        } else {
+            selectedDate = null;
+        }
+    });
+}
+if(todayBtn) {
+    todayBtn.addEventListener('click', () => {
+        selectedDate = null;
+        if(dateInput) dateInput.value = '';
+    })
+}
 
 
 const CYCLE = 29.53058867;
@@ -36,12 +57,13 @@ function getMoonPhase(date) {
     const norm = days / CYCLE;
 
     const illuminationPct = Math.round((1 - Math.cos(norm * Math.PI * 2)) / 2 * 100);
-    const phase = PHASES.find(p => days <= p.max);
+    const phaseIndex = PHASES.findIndex(p => days <= p.max);
+    const phase = PHASES[phaseIndex]
     const daysToFull = days <= 14.77
           ? Math.ceil(14.77 - days)
           : Math.ceil(CYCLE - days + 14.77);
 
-    return {days, norm, illuminationPct, name: phase.name, icon: phase.icon, daysToFull }
+    return {days, norm, illuminationPct, name: phase.name, icon: phase.icon, daysToFull, index: phaseIndex }
 }
 
 
@@ -71,7 +93,7 @@ function drawMoonGlow(cx, cy, r, intensity) {
 // Draw moon phase shape
 
 
-function drawMoon(cx, cy, r, norm) {
+function drawMoon(cx, cy, r, norm, isFull) {
     const tX = Math.cos(norm * Math.PI * 2);
     const waxing = norm < 0.5;
 
@@ -111,6 +133,14 @@ function drawMoon(cx, cy, r, norm) {
         ctx.fill();
     }
     ctx.restore();
+    if(isFull) {
+        ctx.beginPath();
+        const rightWidth = Math.max(3, r * 0.02);
+        ctx.lineWidth = rightWidth;
+        ctx.strokeStyle = 'rgba(200, 232, 255, 0.22)';
+        ctx.arc(cx, cy, r + rightWidth * 0.8, 0, Math.PI * 2);
+        ctx.stroke();
+    }
 }
 
 
@@ -156,7 +186,7 @@ function drawCraters(cx, cy, r) {
 // Update the info panel
 
 
-function updateInfo(phase) {
+function updateInfo(phase, date = new Date()) {
     phaseIcon.innerText = phase.icon;
     phaseName.innerText = phase.name;
     illumination.innerText = `${phase.illuminationPct}%`;
@@ -164,25 +194,31 @@ function updateInfo(phase) {
     nextFull.innerText = phase.daysToFull === 0
         ? 'Tonight!'
         : `${phase.daysToFull} day${phase.daysToFull === 1 ? '' : 's'}`;
-    currentDate.innerText = new Date().toLocaleDateString('en-US', {
+    currentDate.innerText = date.toLocaleDateString('en-US', {
         weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
     })
     const cyclePct = Math.round(phase.norm * 100);
+    const cycleBar = document.getElementById('cycle-bar');
     if(cycleBar) cycleBar.style.width = `${cyclePct}%`;
+
+    document.querySelectorAll('.phase-item').forEach((el, i) => {
+        el.classList.toggle('active', i === phase.index);
+    })
 }
 
 function render() {
-    const phase = getMoonPhase(new Date());
+    const now = selectedDate || new Date();
+    const phase = getMoonPhase(now);
     const cx = canvas.width / 2;
     const cy = canvas.height / 2;
     const r = Math.min(canvas.width, canvas.height) * 0.27;
-    const pulse = Math.sin(Date.now() / 800) * 0.3 + 0.7;
+    const pulse = Math.sin(Date.now() / 1200) * 0.3 + 0.7;
 
     drawBackground();
     drawMoonGlow(cx, cy, r, (phase.illuminationPct / 100) * pulse);
-    drawMoon(cx, cy, r, phase.norm);
+    drawMoon(cx, cy, r, phase.norm, phase.name === 'Full Moon');
     drawCraters(cx, cy, r);
-    updateInfo(phase);
+    updateInfo(phase, now);
 
     requestAnimationFrame(render);
 }
